@@ -22,8 +22,8 @@
       bindings
         = <&macro_tap &kp ESC &kp COLON &kp W &kp RET>;
     };
-  }
-}
+  };
+};
 
 / {
   behaviors {
@@ -34,7 +34,7 @@
       bindings = <&none>, <&kp LALT(LCTRL(F))>;
     };
   };
-}
+};
 
 / {
         keymap {
