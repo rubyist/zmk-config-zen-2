@@ -31,7 +31,7 @@
       compatible = "zmk,behavior-tap-dance";
       label = "I3_FLOAT";
       #binding-cells = <0>;
-      bindings = <&none>, <&kp LALT(LCTRL(F))>;
+      bindings = <&none>, <&kp LA(LC(F))>;
     };
   };
 };
@@ -62,7 +62,7 @@
 // | SHFT |  6  |  7  |  8  |  9  |  0  |   |  +  |  :  |  ,  |  .  |  /  |  Z          |
 //                    | NAV | BSPC | LALT |               | ENT  | SPACE |     |
                         bindings = <
-   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp N6    &kp N7    &kp N8    &kp N9   &kp N0   &kp LCTRL(LSHFT(ESC))
+   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp N6    &kp N7    &kp N8    &kp N9   &kp N0   &kp LC(LS(ESC))
    &to DFLT   &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp MINUS &kp EQUAL &kp x     &kp LBKT &kp RBKT &kp LS(T)
    &kp LSHFT  &kp N6       &kp N7       &kp N8       &kp N9       &kp N0         &kp PLUS  &kp COLON &kp COMMA &kp DOT  &kp FLSH &kp LS(Z)
                           	        &to NAV      &kp BSPC &kp LALT         &kp RET  &kp SPACK  &none
@@ -77,9 +77,9 @@
 // | SHFT     | WS6  | WS7  | WS8  | WS9  | FLT |   |     |     |     |     | PvTB | PgDn |
 //                    |     | BSPC | LALT |               | ENT  | SPACE | NUM |
                         bindings = <
-   &bootloader &none       &none       &none       &none       &none          &kp LALT(LEFT) &kp LALT(UP)  &kp LALT(DOWN)  &kp LALT(RIGHT) &kp LCTRL(LSHFT(T))     &kp HOME
-   &kp LCTRL   &kp LALT(1) &kp LALT(2) &kp LALT(3) &kp LALT(4) &kp LALT(5)    &kp LEFT       &kp UP        &kp DOWN        &kp RIGHT       &kp LCTRL(LSHFT(RIGHT)) &kp PG_UP
-   &kp LSHFT   &kp LALT(6) &kp LALT(7) &kp LALT(8) &kp LALT(9) &i3_float      &none          &none         &none           &none           &kp LCTRL(LSHFT(LEFT))  &kp PG_DN
+   &bootloader &none       &none       &none       &none       &none          &kp LA(LEFT) &kp LA(UP)  &kp LA(DOWN)  &kp LA(RIGHT) &kp LC(LS(T))     &kp HOME
+   &kp LCTRL   &kp LA(1) &kp LA(2) &kp LA(3) &kp LA(4) &kp LA(5)    &kp LEFT       &kp UP        &kp DOWN        &kp RIGHT       &kp LC(LS(RIGHT)) &kp PG_UP
+   &kp LSHFT   &kp LA(6) &kp LA(7) &kp LA(8) &kp LA(9) &i3_float      &none          &none         &none           &none           &kp LC(LS(LEFT))  &kp PG_DN
                     	     &none    &kp BSPC &kp LALT                         &kp RET   &kp SPACE &to NUM 
                         >;
                 };
