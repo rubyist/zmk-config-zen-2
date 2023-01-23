@@ -22,6 +22,48 @@
       bindings
         = <&macro_tap &kp ESC &kp COLON &kp W &kp RET>;
     };
+    macro_pound_lbrace: macro_pound_lbrace {
+      label = "ZM_pound_lbrace";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp POUND &kp LBRACE>;
+    };
+    macro_ex_pipe: macro_ex_pipe {
+      label = "ZM_ex_pipe";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp PIPE &kp LS(DOT) &kp SPACE>;
+    };
+    macro_rarrow: macro_rarrow {
+      label = "ZM_rarrow";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp LS(COMMA) &kp MINUS &kp SPACE>;
+    };
+    macro_ex_map: macro_ex_map {
+      label = "ZM_ex_map";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp PRCNT &kp RBRC>;
+    };
+    macro_fat_arrow: macro_fat_arrow {
+      label = "ZM_fat_arrow";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp EQUAL &kp LS(DOT) &kp SPACE>;
+    };
+    macro_arrow: macro_arrow {
+      label = "ZM_arrow";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+        = <&macro_tap &kp MINUS &kp LS(DOT) &kp SPACE>;
+    };
   };
 };
 
@@ -35,6 +77,143 @@
     };
   };
 };
+
+/ {
+  combos {
+    compatible = "zmk,combos";
+    combo_plus {
+    key-positions = <31 33>;
+      bindings = <&kp PLUS>;
+      layers = <DFLT>;
+    };
+    combo_amp {
+    key-positions = <30 31 32>;
+      bindings = <&kp AMPS>;
+      layers = <DFLT>;
+    };
+    combo_pound {
+    key-positions = <6 7 8>;
+      bindings = <&kp POUND>;
+      layers = <DFLT>;
+    };
+    combo_pound_lbrace {
+    key-positions = <6 7 8>;
+      bindings = <&macro_pound_lbrace>;
+      layers = <DFLT>;
+    };
+    combo_ex_pipe {
+    key-positions = <27 28>;
+      bindings = <&macro_pound_lbrace>;
+      layers = <DFLT>;
+    };
+    combo_rarrow {
+    key-positions = <26 27>;
+      bindings = <&macro_pound_lbrace>;
+      layers = <DFLT>;
+    };
+    combo_kitty_title {
+      key-positions = <9 10>;
+      bindings = <&kp LA(LC(LS(T)))>;
+      layers = <DFLT>;
+    };
+    combo_lbkt {
+      key-positions = <30 31>;
+      bindings = <&kp LBKT>;
+      layers = <DFLT>;
+    };
+    combo_rbkt {
+      key-positions = <30 32>;
+      bindings = <&kp RBKT>;
+      layers = <DFLT>;
+    };
+    combo_vim_lastb {
+      key-positions = <24 25>;
+      bindings = <&kp LC(N6)>;
+      layers = <DFLT>;
+    };
+    combo_ex_map {
+      key-positions = <13 14 15>;
+      bindings = <&macro_ex_map>;
+      layers = <DFLT>;
+    };
+    combo_fat_arrow {
+      key-positions = <15 16>;
+      bindings = <&macro_fat_arrow>;
+      layers = <DFLT>;
+    };
+    combo_arrow {
+      key-positions = <14 15>;
+      bindings = <&macro_arrow>;
+      layers = <DFLT>;
+    };
+    combo_percent {
+      key-positions = <16 17>;
+      bindings = <&kp PRCNT>;
+      layers = <DFLT>;
+    };
+    combo_at {
+      key-positions = <18 19 20>;
+      bindings = <&kp AT>;
+      layers = <DFLT>;
+    };
+    combo_underscore {
+      key-positions = <19 20>;
+      bindings = <&kp UNDERSCORE>;
+      layers = <DFLT>;
+    };
+    combo_lbrc {
+      key-positions = <18 19>;
+      bindings = <&kp LBRC>;
+      layers = <DFLT>;
+    };
+    combo_rbrc {
+      key-positions = <18 20>;
+      bindings = <&kp RBRC>;
+      layers = <DFLT>;
+    };
+    combo_equal {
+      key-positions = <19 21>;
+      bindings = <&kp EQUAL>;
+      layers = <DFLT>;
+    };
+    combo_lparen {
+      key-positions = <7 19>;
+      bindings = <&kp LPAR>;
+      layers = <DFLT>;
+    };
+    combo_rparen {
+      key-positions = <8 20>;
+      bindings = <&kp RPAR>;
+      layers = <DFLT>;
+    };
+    combo_minus {
+      key-positions = <19 20 21>;
+      bindings = <&kp MINUS>;
+      layers = <DFLT>;
+    };
+    combo_dquote {
+      key-positions = <19 23>;
+      bindings = <&kp DQT>;
+      layers = <DFLT>;
+    };
+    combo_grave {
+      key-positions = <1 2>;
+      bindings = <&kp GRAVE>;
+      layers = <DFLT>;
+    };
+    combo_tilde {
+      key-positions = <1 2 3>;
+      bindings = <&kp TILDE>;
+      layers = <DFLT>;
+    };
+  };
+}
+
+// --------------------------------------------------------------------------------------------
+// |  0 |  1 |  2 |  3 |  4 |  5 |   |  6 |  7 |  8 |  9 | 10 | 11 |
+// | 12 | 13 | 14 | 15 | 16 | 17 |   | 18 | 19 | 20 | 21 | 22 | 23 |
+// | 24 | 25 | 26 | 27 | 28 | 29 |   | 30 | 31 | 32 | 33 | 34 | 35 |
+//                | 36 | 37 | 38 |   | 39 | 40 | 41 |
 
 / {
         keymap {
@@ -54,6 +233,7 @@
                   &mo NAV &kp BSPC &kp LALT    &kp RET &kp SPACE &mo NUM
                         >;
                 };
+
                 lower_layer {
                         label = "NUMBER";
 // -------------------------------------------------------------------------------------
@@ -62,7 +242,7 @@
 // | SHFT |  6  |  7  |  8  |  9  |  0  |   |  +  |  :  |  ,  |  .  |  /  |  Z          |
 //                    | NAV | BSPC | LALT |               | ENT  | SPACE |     |
                         bindings = <
-   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp N6    &kp N7    &kp N8    &kp N9   &kp N0   &kp LC(LS(ESC))
+   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp CARET &kp AMPS  &kp STAR  &kp LPAR &kp RPAR &kp LC(LS(ESC))
    &to DFLT   &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp MINUS &kp EQUAL &kp X     &kp LBKT &kp RBKT &kp LS(T)
    &kp LSHFT  &kp N6       &kp N7       &kp N8       &kp N9       &kp N0         &kp PLUS  &kp COLON &kp COMMA &kp DOT  &kp FSLH &kp LS(Z)
                           	        &to NAV      &kp BSPC &kp LALT         &kp RET  &kp SPACE  &none
