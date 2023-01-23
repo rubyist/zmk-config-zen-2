@@ -111,11 +111,6 @@
       bindings = <&macro_pound_lbrace>;
       layers = <DFLT>;
     };
-    combo_kitty_title {
-      key-positions = <9 10>;
-      bindings = <&kp LA(LC(LS(T)))>;
-      layers = <DFLT>;
-    };
     combo_lbkt {
       key-positions = <30 31>;
       bindings = <&kp LBKT>;
@@ -206,8 +201,13 @@
       bindings = <&kp TILDE>;
       layers = <DFLT>;
     };
+    combo_kitty_title {
+      key-positions = <9 10>;
+      bindings = <&kp LA(LC(LS(T)))>;
+      layers = <NAV>;
+    };
   };
-}
+};
 
 // --------------------------------------------------------------------------------------------
 // |  0 |  1 |  2 |  3 |  4 |  5 |   |  6 |  7 |  8 |  9 | 10 | 11 |
