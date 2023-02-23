@@ -97,7 +97,7 @@
       layers = <DFLT>;
     };
     combo_pound_lbrace {
-    key-positions = <6 7 8>;
+    key-positions = <26 27 28>;
       bindings = <&macro_pound_lbrace>;
       layers = <DFLT>;
     };
@@ -122,12 +122,12 @@
       layers = <DFLT>;
     };
     combo_vim_lastb {
-      key-positions = <24 25>;
+      key-positions = <25 26>;
       bindings = <&kp LC(N6)>;
       layers = <DFLT>;
     };
     combo_ex_map {
-      key-positions = <13 14 15>;
+      key-positions = <14 15 16>;
       bindings = <&macro_ex_map>;
       layers = <DFLT>;
     };
