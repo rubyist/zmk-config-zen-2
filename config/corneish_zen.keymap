@@ -73,7 +73,7 @@
       compatible = "zmk,behavior-tap-dance";
       label = "I3_FLOAT";
       #binding-cells = <0>;
-      bindings = <&none>, <&kp LA(LC(F))>;
+      bindings = <&none>, <&kp LG(LC(F))>;
     };
   };
 };
@@ -203,7 +203,7 @@
     };
     combo_kitty_title {
       key-positions = <9 10>;
-      bindings = <&kp LA(LC(LS(T)))>;
+      bindings = <&kp LG(LC(LS(T)))>;
       layers = <NAV>;
     };
   };
@@ -257,9 +257,9 @@
 // | SHFT     | WS6  | WS7  | WS8  | WS9  | FLT |   |     |     |     |     | PvTB | PgDn |
 //                    |     | BSPC | LALT |               | ENT  | SPACE | NUM |
                         bindings = <
-   &bootloader &none     &none     &none     &none     &none             &kp LA(LEFT) &kp LA(UP) &kp LA(DOWN) &kp LA(RIGHT) &kp LC(LS(T))     &kp HOME
-   &kp DFLT    &kp LA(N1) &kp LA(N2) &kp LA(N3) &kp LA(N4) &kp LA(N5)    &kp LEFT     &kp UP     &kp DOWN     &kp RIGHT     &kp LC(LS(RIGHT)) &kp PG_UP
-   &kp LSHFT   &kp LA(N6) &kp LA(N7) &kp LA(N8) &kp LA(N9) &i3_float     &none        &none      &none        &none         &kp LC(LS(LEFT))  &kp PG_DN
+   &bootloader &none     &none     &none     &none     &none             &kp LG(LEFT) &kp LG(UP) &kp LG(DOWN) &kp LG(RIGHT) &kp LC(LS(T))     &kp HOME
+   &kp DFLT    &kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)    &kp LEFT     &kp UP     &kp DOWN     &kp RIGHT     &kp LC(LS(RIGHT)) &kp PG_UP
+   &kp LSHFT   &kp LG(N6) &kp LG(N7) &kp LG(N8) &kp LG(N9) &i3_float     &none        &none      &none        &none         &kp LC(LS(LEFT))  &kp PG_DN
                     	     &none    &kp BSPC &kp LMETA                         &kp RET   &kp SPACE &to NUM 
                         >;
                 };
