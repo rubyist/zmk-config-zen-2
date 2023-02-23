@@ -27,7 +27,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings
-        = <&macro_tap &kp POUND &kp LBRC>;
+        = <&macro_tap &kp POUND &kp RBRC>;
     };
     macro_ex_pipe: macro_ex_pipe {
       label = "ZM_ex_pipe";
