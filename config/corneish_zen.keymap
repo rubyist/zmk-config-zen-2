@@ -28,7 +28,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings
-        = <&macro_tap &kp POUND &kp RBRC>;
+        = <&macro_tap &kp POUND &kp LBRC>;
     };
     macro_ex_pipe: macro_ex_pipe {
       label = "ZM_ex_pipe";
@@ -49,7 +49,7 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings
-        = <&macro_tap &kp PRCNT &kp RBRC>;
+        = <&macro_tap &kp PRCNT &kp LBRC>;
     };
     macro_fat_arrow: macro_fat_arrow {
       label = "ZM_fat_arrow";
@@ -189,7 +189,7 @@
     };
     combo_at {
       key-positions = <18 19 20>;
-      bindings = <&kp AT>;
+      bindings = <&kp AT_SIGN>;
       layers = <DFLT>;
     };
     combo_grave {
@@ -213,7 +213,7 @@
       layers = <DFLT>;
     };
     combo_qwerty {
-      key-positions = <23 25>;
+      key-positions = <23 35>;
       bindings = <&to DFLT>;
       layers = <COLEMK>;
     };
