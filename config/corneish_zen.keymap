@@ -103,12 +103,12 @@
     };
     combo_ex_pipe {
     key-positions = <27 28>;
-      bindings = <&macro_pound_lbrace>;
+      bindings = <&macro_ex_pipe>;
       layers = <DFLT>;
     };
     combo_rarrow {
     key-positions = <26 27>;
-      bindings = <&macro_pound_lbrace>;
+      bindings = <&macro_rarrow>;
       layers = <DFLT>;
     };
     combo_lbkt {
@@ -144,11 +144,6 @@
     combo_percent {
       key-positions = <16 17>;
       bindings = <&kp PRCNT>;
-      layers = <DFLT>;
-    };
-    combo_at {
-      key-positions = <18 19 20>;
-      bindings = <&kp AT>;
       layers = <DFLT>;
     };
     combo_underscore {
@@ -189,6 +184,11 @@
     combo_dquote {
       key-positions = <19 23>;
       bindings = <&kp DQT>;
+      layers = <DFLT>;
+    };
+    combo_at {
+      key-positions = <18 19 20>;
+      bindings = <&kp AT>;
       layers = <DFLT>;
     };
     combo_grave {
