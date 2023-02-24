@@ -7,6 +7,14 @@
 #define NAV 2
 #define COLEMK 3
 
+#define COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
+  combo_##NAME { \
+    timeout-ms = <25>; \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+    layers = <LAYERS>; \
+  };
+
 / {
   chosen {
     zmk,matrix_transform = &default_transform;
@@ -82,168 +90,33 @@
 / {
   combos {
     compatible = "zmk,combos";
-    combo_plus {
-      key-positions = <31 33>;
-      timeout-ms = <25>;
-      bindings = <&kp PLUS>;
-      layers = <DFLT>;
-    };
-    combo_amp {
-      key-positions = <30 31 32>;
-      timeout-ms = <25>;
-      bindings = <&kp AMPS>;
-      layers = <DFLT>;
-    };
-    combo_pound {
-      key-positions = <6 7 8>;
-      timeout-ms = <25>;
-      bindings = <&kp POUND>;
-      layers = <DFLT>;
-    };
-    combo_pound_lbrace {
-      key-positions = <26 27 28>;
-      timeout-ms = <25>;
-      bindings = <&macro_pound_lbrace>;
-      layers = <DFLT>;
-    };
-    combo_ex_pipe {
-      key-positions = <27 28>;
-      timeout-ms = <25>;
-      bindings = <&macro_ex_pipe>;
-      layers = <DFLT>;
-    };
-    combo_rarrow {
-      key-positions = <26 27>;
-      timeout-ms = <25>;
-      bindings = <&macro_rarrow>;
-      layers = <DFLT>;
-    };
-    combo_lbkt {
-      key-positions = <30 31>;
-      timeout-ms = <25>;
-      bindings = <&kp LBKT>;
-      layers = <DFLT>;
-    };
-    combo_rbkt {
-      key-positions = <30 32>;
-      timeout-ms = <25>;
-      bindings = <&kp RBKT>;
-      layers = <DFLT>;
-    };
-    combo_vim_lastb {
-      key-positions = <25 26>;
-      timeout-ms = <25>;
-      bindings = <&kp LC(N6)>;
-      layers = <DFLT>;
-    };
-    combo_ex_map {
-      key-positions = <14 15 16>;
-      timeout-ms = <25>;
-      bindings = <&macro_ex_map>;
-      layers = <DFLT>;
-    };
-    combo_fat_arrow {
-      key-positions = <15 16>;
-      timeout-ms = <25>;
-      bindings = <&macro_fat_arrow>;
-      layers = <DFLT>;
-    };
-    combo_arrow {
-      key-positions = <14 15>;
-      timeout-ms = <25>;
-      bindings = <&macro_arrow>;
-      layers = <DFLT>;
-    };
-    combo_percent {
-      key-positions = <16 17>;
-      timeout-ms = <25>;
-      bindings = <&kp PRCNT>;
-      layers = <DFLT>;
-    };
-    combo_underscore {
-      key-positions = <19 20>;
-      timeout-ms = <25>;
-      bindings = <&kp UNDERSCORE>;
-      layers = <DFLT>;
-    };
-    combo_lbrc {
-      key-positions = <18 19>;
-      timeout-ms = <25>;
-      bindings = <&kp LBRC>;
-      layers = <DFLT>;
-    };
-    combo_rbrc {
-      key-positions = <18 20>;
-      timeout-ms = <25>;
-      bindings = <&kp RBRC>;
-      layers = <DFLT>;
-    };
-    combo_equal {
-      key-positions = <19 21>;
-      timeout-ms = <25>;
-      bindings = <&kp EQUAL>;
-      layers = <DFLT>;
-    };
-    combo_lparen {
-      key-positions = <7 19>;
-      timeout-ms = <25>;
-      bindings = <&kp LPAR>;
-      layers = <DFLT>;
-    };
-    combo_rparen {
-      key-positions = <8 20>;
-      timeout-ms = <25>;
-      bindings = <&kp RPAR>;
-      layers = <DFLT>;
-    };
-    combo_minus {
-      key-positions = <19 20 21>;
-      timeout-ms = <25>;
-      bindings = <&kp MINUS>;
-      layers = <DFLT>;
-    };
-    combo_dquote {
-      key-positions = <19 23>;
-      timeout-ms = <25>;
-      bindings = <&kp DQT>;
-      layers = <DFLT>;
-    };
-    combo_at {
-      key-positions = <18 19 20>;
-      timeout-ms = <25>;
-      bindings = <&kp AT_SIGN>;
-      layers = <DFLT>;
-    };
-    combo_grave {
-      key-positions = <1 2>;
-      timeout-ms = <25>;
-      bindings = <&kp GRAVE>;
-      layers = <DFLT>;
-    };
-    combo_tilde {
-      key-positions = <1 2 3>;
-      timeout-ms = <25>;
-      bindings = <&kp TILDE>;
-      layers = <DFLT>;
-    };
-    combo_kitty_title {
-      key-positions = <9 10>;
-      timeout-ms = <25>;
-      bindings = <&kp LG(LC(LS(T)))>;
-      layers = <NAV>;
-    };
-    combo_colemak {
-      key-positions = <11 23>;
-      timeout-ms = <25>;
-      bindings = <&to COLEMK>;
-      layers = <DFLT>;
-    };
-    combo_qwerty {
-      key-positions = <23 35>;
-      timeout-ms = <25>;
-      bindings = <&to DFLT>;
-      layers = <COLEMK>;
-    };
+    COMBO(plus, &kp PLUS, 31 33, DFLT)
+    COMBO(amp, &kp AMPS, 30 31 32, DFLT)
+    COMBO(pound, &kp POUND, 6 7 8, DFLT)
+    COMBO(pound_lbrace, &macro_pound_lbrace, 26 27 28, DFLT)
+    COMBO(ex_pipe, &macro_ex_pipe, 27 28, DFLT)
+    COMBO(rarrow, &macro_rarrow, 26 27, DFLT)
+    COMBO(lbkt, &kp LBKT, 30 31, DFLT)
+    COMBO(rbkt, &kp RBKT, 30 32, DFLT)
+    COMBO(vim_lastb, &kp LC(N6), 25 26, DFLT)
+    COMBO(ex_map, &macro_ex_map, 14 15 16, DFLT)
+    COMBO(fat_arrow, &macro_fat_arrow, 15 16, DFLT)
+    COMBO(arrow, &macro_arrow, 14 15, DFLT)
+    COMBO(percent, &kp PRCNT, 16 17, DFLT)
+    COMBO(underscore, &kp UNDERSCORE, 19 20, DFLT)
+    COMBO(lbrc, &kp LBRC, 18 19, DFLT)
+    COMBO(rbrc, &kp RBRC, 18 20, DFLT)
+    COMBO(equal, &kp EQUAL, 19 21, DFLT)
+    COMBO(lparen, &kp LPAR, 7 19, DFLT)
+    COMBO(rparen, &kp RPAR, 8 20, DFLT)
+    COMBO(minus, &kp MINUS, 19 20 21, DFLT)
+    COMBO(dquote, &kp DQT, 19 23, DFLT)
+    COMBO(at, &kp AT_SIGN, 18 19 20, DFLT)
+    COMBO(grave, &kp GRAVE, 1 2, DFLT)
+    COMBO(tilde, &kp TILDE, 1 2 3, DFLT)
+    COMBO(kitty_title, &kp LA(LC(LS(T))), 9 10, NAV)
+    COMBO(colemak, &to COLEMK, 11 23, DFLT)
+    COMBO(qwerty, &to DFLT, 23 35, COLEMK)
   };
 };
 
