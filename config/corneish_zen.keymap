@@ -73,6 +73,18 @@
       bindings
         = <&macro_tap &kp MINUS &kp LS(DOT) &kp SPACE>;
     };
+    macro_lpar_dqt: macro_lpar_dqt {
+      label = "ZM_lpar_dqt";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp LPAR &kp DQT>;
+    };
+    macro_dqt_rpar: macro_dqt_rpar {
+      label = "ZM_dqt_rpar";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp DQT &kp RPAR>;
+    };
   };
 };
 
@@ -108,6 +120,12 @@
       #binding-cells = <0>;
       bindings = <&none>, <&bt BT_SEL 3>;
     };
+    vim_save_td: vim_save_td {
+      compatible = "zmk,behavior-tap-dance";
+      label = "VIM_SAVE";
+      #binding-cells = <0>;
+      bindings = <&none>, <&vim_save>;
+    };
   };
 };
 
@@ -131,19 +149,30 @@
     COMBO(lbrc, &kp LBRC, 18 19, DFLT)
     COMBO(rbrc, &kp RBRC, 18 20, DFLT)
     COMBO(equal, &kp EQUAL, 19 21, DFLT)
-    COMBO(lparen, &kp LPAR, 7 19, DFLT)
-    COMBO(rparen, &kp RPAR, 8 20, DFLT)
+    COMBO(lparen, &kp LPAR, 19 31, DFLT)
+    COMBO(rparen, &kp RPAR, 20 32, DFLT)
     COMBO(minus, &kp MINUS, 19 20 21, DFLT)
     COMBO(dquote, &kp DQT, 19 23, DFLT)
     COMBO(at, &kp AT_SIGN, 18 19 20, DFLT)
     COMBO(grave, &kp GRAVE, 1 2, DFLT)
     COMBO(tilde, &kp TILDE, 1 2 3, DFLT)
     COMBO(kitty_title, &kp LA(LC(LS(T))), 9 10, NAV)
-    COMBO(colemak, &to COLEMK, 11 23, DFLT)
-    COMBO(qwerty, &to DFLT, 23 35, COLEMK)
+    COMBO(colemak, &to COLEMK, 11 23 35, DFLT)
+    COMBO(qwerty, &to DFLT, 11 23 35, COLEMK)
+    COMBO(lpar_dqt, &macro_lpar_dqt, 31 32, DFLT COLEMK)
+    COMBO(dqt_rpar, &macro_dqt_rpar, 32 33, DFLT COLEMK)
+    COMBO(n1, &kp N1, 1 13, DFLT)
+    COMBO(n2, &kp N2, 2 14, DFLT)
+    COMBO(n3, &kp N3, 3 15, DFLT)
+    COMBO(n4, &kp N4, 4 16, DFLT)
+    COMBO(n5, &kp N5, 5 17, DFLT)
+    COMBO(n6, &kp N6, 6 18, DFLT)
+    COMBO(n7, &kp N7, 7 19, DFLT)
+    COMBO(n8, &kp N8, 8 20, DFLT)
+    COMBO(n9, &kp N9, 9 21, DFLT)
+    COMBO(n0, &kp N0, 10 22, DFLT)
   };
 };
-
 // Key position map for combos
 // -----------------------------------------------------------------
 // |  0 |  1 |  2 |  3 |  4 |  5 |   |  6 |  7 |  8 |  9 | 10 | 11 |
@@ -163,7 +192,7 @@
 // | SHFT       |  Z    |    X  |    C   |   V   |  B    |   |  N    |  M    |  ,    |  .    |  /    |  \   |
 //                    |  NAV  | BSPC  | LALT  |               | ENT  | SPACE | NUM |
                         bindings = <
-   &kp TAB       &kp Q   &kp W   &kp E    &kp R   &kp T       &kp Y   &kp U    &kp I  &kp O    &kp P    &vim_save
+   &kp TAB       &kp Q   &kp W   &kp E    &kp R   &kp T       &kp Y   &kp U    &kp I  &kp O    &kp P    &vim_save_td
    &mt LCTRL ESC &kp A   &kp S   &kp D    &kp F   &kp G       &kp H   &kp J    &kp K  &kp L    &kp SEMI &kp SQT
    &kp LSHFT     &kp Z   &kp X   &kp C    &kp V   &kp B       &kp N   &kp M    &kp COMMA &kp DOT &kp FSLH &kp BSLH
                        &mo NAV   &kp BSPC   &kp LMETA          &kp RET &kp SPACE &mo NUM
