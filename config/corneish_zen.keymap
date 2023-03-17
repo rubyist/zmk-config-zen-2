@@ -14,6 +14,14 @@
     key-positions = <KEYPOS>; \
     layers = <LAYERS>; \
   };
+   
+#define DANCE(NAME, LABEL, BIND1, BIND2, BIND3) \
+   td_##NAME: td_##NAME { \
+    compatible = "zmk,behavior-tap-dance"; \
+    label = LABEL; \
+    #binding-cells = <0>; \
+    bindings = <BIND1>, <BIND2>, <BIND3>; \
+  };
 
 / {
   chosen {
@@ -85,92 +93,96 @@
       #binding-cells = <0>;
       bindings = <&macro_tap &kp DQT &kp RPAR>;
     };
+    macro_map_key: macro_map_key {
+      label = "ZMK_map_key";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp LBKT &kp COLON>;
+    };
+    macro_map_str: macro_map_str {
+      label = "ZMK_map_str";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp LBKT &kp DQT>;
+    };
+    macro_dqt_rbkt: macro_dqt_rbkt {
+      label = "ZMK_dqt_rbkt";
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap &kp DQT &kp RBKT>;
+    };
   };
 };
 
 / {
   behaviors {
-    i3_float: i3_float {
-      compatible = "zmk,behavior-tap-dance";
-      label = "I3_FLOAT";
-      #binding-cells = <0>;
-      bindings = <&none>, <&kp LG(LS(F))>;
-    };
-    bt_one: bt_one {
-      compatible = "zmk,behavior-tap-dance";
-      label = "BT_ONE";
-      #binding-cells = <0>;
-      bindings = <&none>, <&bt BT_SEL 0>;
-    };
-    bt_two: bt_two {
-      compatible = "zmk,behavior-tap-dance";
-      label = "BT_TWO";
-      #binding-cells = <0>;
-      bindings = <&none>, <&bt BT_SEL 1>;
-    };
-    bt_three: bt_three {
-      compatible = "zmk,behavior-tap-dance";
-      label = "BT_THREE";
-      #binding-cells = <0>;
-      bindings = <&none>, <&bt BT_SEL 2>;
-    };
-    bt_four: bt_four {
-      compatible = "zmk,behavior-tap-dance";
-      label = "BT_FOUR";
-      #binding-cells = <0>;
-      bindings = <&none>, <&bt BT_SEL 3>;
-    };
-    vim_save_td: vim_save_td {
-      compatible = "zmk,behavior-tap-dance";
-      label = "VIM_SAVE";
-      #binding-cells = <0>;
-      bindings = <&none>, <&vim_save>;
-    };
+    DANCE(i3_float, "i3_float", &none, &kp LG(LS(F)), &none)
+    DANCE(bt_one, "bt_one", &none, &bt BT_SEL 1, &none)
+    DANCE(bt_two, "bt_two", &none, &bt BT_SEL 2, &none)
+    DANCE(bt_three, "bt_three", &none, &bt BT_SEL 3, &none)
+    DANCE(bt_four, "bt_four", &none, &bt BT_SEL 4, &none)
+    DANCE(vim_save, "vim_save", &kp LG(MINUS), &vim_save, &none)
+    DANCE(lpar_dqt, "lpar_dqt", &kp LPAR, &macro_lpar_dqt, &none)
+    DANCE(rpar_dqt, "rpar_dqt", &kp RPAR, &macro_dqt_rpar, &none)
+    DANCE(bkt_map, "bkt_map", &macro_map_key, &macro_map_str, &kp LBKT)
+    DANCE(rbkt, "rbkt", &kp RBKT, &macro_dqt_rbkt, &none)
+    DANCE(n1, "n1", &kp N1, &kp EXCL, &none)
+    DANCE(n2, "n2", &kp N2, &kp AT, &none)
+    DANCE(n3, "n3", &kp N3, &kp HASH, &none)
+    DANCE(n4, "n4", &kp N4, &kp DOLLAR, &none)
+    DANCE(n5, "n5", &kp N5, &kp PRCNT, &none)
+    DANCE(n6, "n6", &kp N6, &kp CARET, &none)
+    DANCE(n7, "n7", &kp N7, &kp AMPS, &none)
+    DANCE(n8, "n8", &kp N8, &kp STAR, &none)
+    DANCE(n9, "n9", &kp N9, &kp LPAR, &none)
+    DANCE(n0, "n0", &kp N0, &kp RPAR, &none)
   };
 };
 
 / {
   combos {
     compatible = "zmk,combos";
-    COMBO(plus, &kp PLUS, 31 33, DFLT)
-    COMBO(amp, &kp AMPS, 30 31 32, DFLT)
-    COMBO(pound, &kp POUND, 6 7 8, DFLT)
-    COMBO(pound_lbrace, &macro_pound_lbrace, 26 27 28, DFLT)
-    COMBO(ex_pipe, &macro_ex_pipe, 27 28, DFLT)
-    COMBO(rarrow, &macro_rarrow, 26 27, DFLT)
-    COMBO(lbkt, &kp LBKT, 30 31, DFLT)
-    COMBO(rbkt, &kp RBKT, 30 32, DFLT)
-    COMBO(vim_lastb, &kp LC(N6), 25 26, DFLT)
-    COMBO(ex_map, &macro_ex_map, 14 15 16, DFLT)
-    COMBO(fat_arrow, &macro_fat_arrow, 15 16, DFLT)
-    COMBO(arrow, &macro_arrow, 14 15, DFLT)
-    COMBO(percent, &kp PRCNT, 16 17, DFLT)
-    COMBO(underscore, &kp UNDERSCORE, 19 20, DFLT)
-    COMBO(lbrc, &kp LBRC, 18 19, DFLT)
-    COMBO(rbrc, &kp RBRC, 18 20, DFLT)
-    COMBO(equal, &kp EQUAL, 19 21, DFLT)
-    COMBO(lparen, &kp LPAR, 19 31, DFLT)
-    COMBO(rparen, &kp RPAR, 20 32, DFLT)
-    COMBO(minus, &kp MINUS, 19 20 21, DFLT)
-    COMBO(dquote, &kp DQT, 19 23, DFLT)
-    COMBO(at, &kp AT_SIGN, 18 19 20, DFLT)
-    COMBO(grave, &kp GRAVE, 1 2, DFLT)
-    COMBO(tilde, &kp TILDE, 1 2 3, DFLT)
+    // Left Side
+    COMBO(pound_lbrace, &macro_pound_lbrace, 26 27 28, DFLT COLEMK)
+    COMBO(ex_pipe, &macro_ex_pipe, 27 28, DFLT COLEMK)
+    COMBO(rarrow, &macro_rarrow, 26 27, DFLT COLEMK)
+    COMBO(ex_map, &macro_ex_map, 14 15 16, DFLT COLEMK)
+    COMBO(fat_arrow, &macro_fat_arrow, 15 16, DFLT COLEMK)
+    COMBO(arrow, &macro_arrow, 14 15, DFLT COLEMK)
+    COMBO(percent, &kp PRCNT, 16 17, DFLT COLEMK)
+    COMBO(grave, &kp GRAVE, 1 2, DFLT COLEMK)
+    COMBO(tilde, &kp TILDE, 1 2 3, DFLT COLEMK)
+    COMBO(n1, &td_n1, 1 13, DFLT COLEMK)
+    COMBO(n2, &td_n2, 2 14, DFLT COLEMK)
+    COMBO(n3, &td_n3, 3 15, DFLT COLEMK)
+    COMBO(n4, &td_n4, 4 16, DFLT COLEMK)
+    COMBO(n5, &td_n5, 5 17, DFLT COLEMK)
+
+    // Right Side
+    COMBO(underscore, &kp UNDERSCORE, 19 20, DFLT COLEMK)
+    COMBO(minus, &kp MINUS, 19 21, DFLT COLEMK)
+    COMBO(equal, &kp EQUAL, 19 20 21, DFLT COLEMK)
+    COMBO(lpar, &td_lpar_dqt, 19 31, DFLT COLEMK) 
+    COMBO(rpar, &td_rpar_dqt, 20 32, DFLT COLEMK)
+    COMBO(pound, &kp POUND, 20 21, DFLT COLEMK)
+    COMBO(lbrc, &kp LBRC, 18 19, DFLT COLEMK)
+    COMBO(rbrc, &kp RBRC, 18 20, DFLT COLEMK)
+    COMBO(lbkt, &td_bkt_map, 30 31, DFLT COLEMK)
+    COMBO(rbkt, &td_rbkt, 30 32, DFLT COLEMK)
+    COMBO(at, &kp AT_SIGN, 31 32, DFLT COLEMK)
+    COMBO(amp, &kp AMPS, 32 33, DFLT COLEMK)
+    COMBO(plus, &kp PLUS, 31 33, DFLT COLEMK)
+
+    COMBO(vim_lastb, &kp LC(N6), 25 26, DFLT COLEMK)
+    COMBO(dquote, &kp DQT, 19 23, DFLT COLEMK)
     COMBO(kitty_title, &kp LA(LC(LS(T))), 9 10, NAV)
     COMBO(colemak, &to COLEMK, 11 23 35, DFLT)
     COMBO(qwerty, &to DFLT, 11 23 35, COLEMK)
-    COMBO(lpar_dqt, &macro_lpar_dqt, 31 32, DFLT COLEMK)
-    COMBO(dqt_rpar, &macro_dqt_rpar, 32 33, DFLT COLEMK)
-    COMBO(n1, &kp N1, 1 13, DFLT)
-    COMBO(n2, &kp N2, 2 14, DFLT)
-    COMBO(n3, &kp N3, 3 15, DFLT)
-    COMBO(n4, &kp N4, 4 16, DFLT)
-    COMBO(n5, &kp N5, 5 17, DFLT)
-    COMBO(n6, &kp N6, 6 18, DFLT)
-    COMBO(n7, &kp N7, 7 19, DFLT)
-    COMBO(n8, &kp N8, 8 20, DFLT)
-    COMBO(n9, &kp N9, 9 21, DFLT)
-    COMBO(n0, &kp N0, 10 22, DFLT)
+    COMBO(n6, &td_n6, 6 18, DFLT COLEMK)
+    COMBO(n7, &td_n7, 7 19, DFLT COLEMK)
+    COMBO(n8, &td_n8, 8 20, DFLT COLEMK)
+    COMBO(n9, &td_n9, 9 21, DFLT COLEMK)
+    COMBO(n0, &td_n0, 10 22, DFLT COLEMK)
   };
 };
 // Key position map for combos
@@ -192,10 +204,10 @@
 // | SHFT       |  Z    |    X  |    C   |   V   |  B    |   |  N    |  M    |  ,    |  .    |  /    |  \   |
 //                    |  NAV  | BSPC  | LALT  |               | ENT  | SPACE | NUM |
                         bindings = <
-   &kp TAB       &kp Q   &kp W   &kp E    &kp R   &kp T       &kp Y   &kp U    &kp I  &kp O    &kp P    &vim_save_td
+   &kp TAB       &kp Q   &kp W   &kp E    &kp R   &kp T       &kp Y   &kp U    &kp I  &kp O    &kp P    &td_vim_save
    &mt LCTRL ESC &kp A   &kp S   &kp D    &kp F   &kp G       &kp H   &kp J    &kp K  &kp L    &kp SEMI &kp SQT
    &kp LSHFT     &kp Z   &kp X   &kp C    &kp V   &kp B       &kp N   &kp M    &kp COMMA &kp DOT &kp FSLH &kp BSLH
-                       &mo NAV   &kp BSPC   &kp LMETA          &kp RET &kp SPACE &mo NUM
+                       &mo NAV   &kp BSPC   &kp LMETA             &kp RET &kp SPACE &mo NUM
                         >;
                 };
 
@@ -222,9 +234,9 @@
 // | SHFT     | WS6  | WS7  | WS8  | WS9  | FLT |   |     |     |     |     | PvTB | PgDn |
 //                    |     | BSPC | LALT |               | ENT  | SPACE | NUM |
                         bindings = <
-   &none       &none      &bt_one    &bt_two    &bt_three  &bt_four      &kp LG(LEFT) &kp LG(UP) &kp LG(DOWN) &kp LG(RIGHT) &kp LC(LS(T))     &kp HOME
+   &none       &none      &td_bt_one    &td_bt_two    &td_bt_three  &td_bt_four      &kp LG(LEFT) &kp LG(UP) &kp LG(DOWN) &kp LG(RIGHT) &kp LC(LS(T))     &kp HOME
    &kp DFLT    &kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)    &kp LEFT     &kp DOWN   &kp UP       &kp RIGHT     &kp LC(LS(RIGHT)) &kp PG_UP
-   &kp LSHFT   &kp LG(N6) &kp LG(N7) &kp LG(N8) &kp LG(N9) &i3_float     &none        &none      &none        &none         &kp LC(LS(LEFT))  &kp PG_DN
+   &kp LSHFT   &kp LG(N6) &kp LG(N7) &kp LG(N8) &kp LG(N9) &td_i3_float     &none        &none      &none        &none         &kp LC(LS(LEFT))  &kp PG_DN
                     	     &none    &kp BSPC &kp LMETA                         &kp RET   &kp SPACE &to NUM 
                         >;
                 };
